@@ -112,9 +112,9 @@ class ProgressMonitor(object):
             eta = self.start_time + datetime.timedelta(seconds=estimated_length)
             eta_str = eta.strftime('%c')
 
-        print '%s (~%d%% done, ETA %s)' % (stack_printout,
+        print('%s (~%d%% done, ETA %s)' % (stack_printout,
                                            round(frac_done * 100.0),
-                                           eta_str)
+                                           eta_str))
         self.last_report = datetime.datetime.now()
 
     def fraction_done(self, start=0.0, finish=1.0, stack=None):

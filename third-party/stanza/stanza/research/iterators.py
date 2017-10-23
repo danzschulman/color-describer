@@ -41,4 +41,4 @@ def iter_batches(iterable, batch_size):
     sourceiter = iter(iterable)
     while True:
         batchiter = islice(sourceiter, batch_size)
-        yield chain([batchiter.next()], batchiter)
+        yield chain([batchiter.__next__()], batchiter)

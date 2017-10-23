@@ -1,7 +1,7 @@
 import contextlib
 import mock
 import os
-import StringIO
+from io import StringIO
 
 
 def yields(thing):

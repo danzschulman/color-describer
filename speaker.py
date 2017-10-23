@@ -295,9 +295,9 @@ class SpeakerLearner(NeuralLearner):
         N = np.zeros((len(next_tokens), self.seq_vec.max_len - 1), dtype=np.int32)
         c = self.color_vec.vectorize_all(colors, hsv=True)
         if len(c.shape) == 1:
-            c = c.reshape((len(colors) / context_len, context_len))
+            c = c.reshape((len(colors) // context_len, context_len))
         else:
-            c = c.reshape((len(colors) / context_len, context_len * c.shape[1]) +
+            c = c.reshape((len(colors) // context_len, context_len * c.shape[1]) +
                           c.shape[2:])
         for i, (color, prev, next) in enumerate(zip(colors, previous, next_tokens)):
             if len(prev) > P.shape[1]:

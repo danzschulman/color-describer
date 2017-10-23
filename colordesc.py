@@ -1,4 +1,5 @@
-import cPickle as pickle
+#import cPickle as pickle
+import pickle
 import theano  # NOQA: for doctest (get that dot_parser warning out of the way with)
 
 from stanza.research.instance import Instance
@@ -19,8 +20,8 @@ class ColorDescriber(object):
             experiment-produced pickle files).
         '''
         if picklefile is None:
-            with open('models/lstm_fourier_quick.p', 'rb') as infile:
-                self.model = pickle.load(infile)
+            with open('../color-describer/models/lstm_fourier_quick.p', 'rb') as infile:
+                self.model = pickle.load(infile, encoding='latin1')
         else:
             self.model = pickle.load(picklefile)
         self.model.options.verbosity = 0

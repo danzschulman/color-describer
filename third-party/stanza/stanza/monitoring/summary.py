@@ -59,8 +59,8 @@ import png
 import struct
 import sys
 import time
-from itertools import izip
-from StringIO import StringIO
+izip=zip#from itertools import izip
+from io import StringIO
 
 from tensorflow.core.util.event_pb2 import Event
 from tensorflow.core.framework.summary_pb2 import Summary, HistogramProto

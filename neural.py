@@ -62,21 +62,21 @@ parser.add_argument('--true_grad_clipping', type=float, default=5.0,
 
 NONLINEARITIES = {
     name: func
-    for name, func in lasagne.nonlinearities.__dict__.iteritems()
+    for name, func in lasagne.nonlinearities.__dict__.items()
     if name.islower() and not name.startswith('__')
 }
 del NONLINEARITIES['theano']
 
 OPTIMIZERS = {
     name: func
-    for name, func in lasagne.updates.__dict__.iteritems()
+    for name, func in lasagne.updates.__dict__.items()
     if (name in lasagne.updates.__all__ and
         not name.startswith('apply_') and not name.endswith('_constraint'))
 }
 
 CELLS = {
     name[:-len('Layer')]: func
-    for name, func in lasagne.layers.recurrent.__dict__.iteritems()
+    for name, func in lasagne.layers.recurrent.__dict__.items()
     if (name in lasagne.layers.recurrent.__all__ and name.endswith('Layer') and
         name != 'CustomRecurrentLayer')
 }
@@ -190,7 +190,7 @@ class SimpleLasagneModel(object):
     def visualize_graphs(self, monitored, out_dir):
         id_tag = (self.id + '.') if self.id else ''
 
-        for tag, graph in monitored.iteritems():
+        for tag, graph in monitored.items():
             tag = tag.replace('/', '.')
             pydotprint(graph, outfile=os.path.join(out_dir, id_tag + tag + '.svg'),
                        format='svg', var_with_name_simple=True)
@@ -355,7 +355,7 @@ class NeuralLearner(Learner):
             if writer is not None:
                 step = (iteration + 1) * self.options.train_epochs
                 self.on_iter_end(step, writer)
-                for key, value in validation_results.iteritems():
+                for key, value in validation_results.items():
                     tag = 'val/' + key.split('.', 1)[1].replace('.', '/')
                     writer.log_scalar(step, tag, value)
         writer.flush()

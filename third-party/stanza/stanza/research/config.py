@@ -5,9 +5,9 @@ import sys
 import json
 import logfile
 import traceback
-import StringIO
+from io import StringIO
 import contextlib
-import __builtin__
+import builtins
 from pyhocon import ConfigFactory
 
 
@@ -61,7 +61,7 @@ class HoconConfigFileParser(object):
 
 
 _options_parser = ArgumentParser(conflict_handler='resolve', add_help=False,
-                                 config_file_parser=HoconConfigFileParser(),
+                                 #config_file_parser=HoconConfigFileParser(),
                                  formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 _options_parser.add_argument('--run_dir', '-R', type=str, default=None,
                              help='The directory in which to write log files, parameters, etc. '
